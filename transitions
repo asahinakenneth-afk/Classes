@@ -5,7 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.image import Image
 
-class Button(Button):
+class SlenderButton(Button):
     ## Me parece mas comodo ponerle ya la direccion y el destino en el init la vdd...
     def __init__(self, destino, direccion="left", **kwargs):
         super().__init__(**kwargs)
@@ -29,10 +29,10 @@ class PantallaInicio(Screen):
         
         botones = BoxLayout(orientation='vertical')
         
-        btn_arriba = Button(text="Arriba", destino="pantalla_arriba", direccion="up")
-        btn_abajo = Button(text="Abajo", destino="pantalla_abajo", direccion="down")
-        btn_izq = Button(text="Izquierda", destino="pantalla_izq", direccion="left")
-        btn_der = Button(text="Derecha", destino="pantalla_der", direccion="right")
+        btn_arriba = SlenderButton(text="Arriba", destino="pantalla_arriba", direccion="up")
+        btn_abajo = SlenderButton(text="Abajo", destino="pantalla_abajo", direccion="down")
+        btn_izq = SlenderButton(text="Izquierda", destino="pantalla_izq", direccion="left")
+        btn_der = SlenderButton(text="Derecha", destino="pantalla_der", direccion="right")
         
         botones.add_widget(btn_arriba)
         botones.add_widget(btn_abajo)
@@ -56,7 +56,7 @@ class PantallaArriba(Screen):
         )
         layout.add_widget(image)
         
-        btn_volver = Button(text="Regresar", destino="inicio", direccion="down")
+        btn_volver = SlenderButton(text="Regresar", destino="inicio", direccion="down")
         layout.add_widget(btn_volver)
         self.add_widget(layout)
 
@@ -74,7 +74,7 @@ class PantallaAbajo(Screen):
         )
         layout.add_widget(image)
         
-        btn_volver = Button(text="Regresar", destino="inicio", direccion="up")
+        btn_volver = SlenderButton(text="Regresar", destino="inicio", direccion="up")
         layout.add_widget(btn_volver)
         self.add_widget(layout)
 
@@ -92,7 +92,7 @@ class PantallaIzquierda(Screen):
         )
         layout.add_widget(image)
         
-        btn_volver = Button(text="Regresar", destino="inicio", direccion="right")
+        btn_volver = SlenderButton(text="Regresar", destino="inicio", direccion="right")
         layout.add_widget(btn_volver)
         self.add_widget(layout)
 
@@ -111,7 +111,7 @@ class PantallaDerecha(Screen):
         layout.add_widget(image)
         
         # Regresar invierte la animación (hacia la izquierda, usamos el valor por defecto)
-        btn_volver = Button(text="Regresar", destino="inicio")
+        btn_volver = SlenderButton(text="Regresar", destino="inicio")
         layout.add_widget(btn_volver)
         self.add_widget(layout)
 
