@@ -1,0 +1,132 @@
+from kivy.app import App
+from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.image import Image
+
+class Button(Button):
+    ## Me parece mas comodo ponerle ya la direccion y el destino en el init la vdd...
+    def __init__(self, destino, direccion="left", **kwargs):
+        super().__init__(**kwargs)
+        self.destino = destino
+        self.direccion = direccion
+
+    def on_press(self):
+        ## Hola tuve que buscar en cinco fuentes distintas y creo quee esto no era lo que me dijo el profe??
+        ## pero igualito sirve y lo hice yo AJAJAJJAJAJA
+        app = App.get_running_app()
+        app.root.transition.direction = self.direccion
+        app.root.current = self.destino
+
+class PantallaInicio(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        layout = BoxLayout(orientation='horizontal')
+        
+        texto = Label(text="Presiona los botones en orden pli", halign="center")
+        layout.add_widget(texto)
+        
+        botones = BoxLayout(orientation='vertical')
+        
+        btn_arriba = Button(text="Arriba", destino="pantalla_arriba", direccion="up")
+        btn_abajo = Button(text="Abajo", destino="pantalla_abajo", direccion="down")
+        btn_izq = Button(text="Izquierda", destino="pantalla_izq", direccion="left")
+        btn_der = Button(text="Derecha", destino="pantalla_der", direccion="right")
+        
+        botones.add_widget(btn_arriba)
+        botones.add_widget(btn_abajo)
+        botones.add_widget(btn_izq)
+        botones.add_widget(btn_der)
+        
+        layout.add_widget(botones)
+        self.add_widget(layout)
+
+class PantallaArriba(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical')
+        text = Label(text="Soy slenderman. Y estos son mis bosques")
+        layout.add_widget(text)
+
+        image = Image(
+            source='slenderman_1.jpg', 
+            size_hint=(1, None),
+            height=300          
+        )
+        layout.add_widget(image)
+        
+        btn_volver = Button(text="Regresar", destino="inicio", direccion="down")
+        layout.add_widget(btn_volver)
+        self.add_widget(layout)
+
+class PantallaAbajo(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical')
+        text = Label(text="Slenderman. Voy a asesinarte")
+        layout.add_widget(text)
+
+        image = Image(
+            source='slenderman_2.jpg', 
+            size_hint=(1, None),
+            height=300          
+        )
+        layout.add_widget(image)
+        
+        btn_volver = Button(text="Regresar", destino="inicio", direccion="up")
+        layout.add_widget(btn_volver)
+        self.add_widget(layout)
+
+class PantallaIzquierda(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical')
+        text = Label(text="Slenderman. Recoge todas mis notas")
+        layout.add_widget(text)
+
+        image = Image(
+            source='slenderman_3.jpg', 
+            size_hint=(1, None),
+            height=300          
+        )
+        layout.add_widget(image)
+        
+        btn_volver = Button(text="Regresar", destino="inicio", direccion="right")
+        layout.add_widget(btn_volver)
+        self.add_widget(layout)
+
+class PantallaDerecha(Screen):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        layout = BoxLayout(orientation='vertical')
+        text = Label(text="Slenderman. Manten el personaje")
+        layout.add_widget(text)
+
+        image = Image(
+            source='slenderman_4.jpg', 
+            size_hint=(1, None),
+            height=300          
+        )
+        layout.add_widget(image)
+        
+        # Regresar invierte la animación (hacia la izquierda, usamos el valor por defecto)
+        btn_volver = Button(text="Regresar", destino="inicio")
+        layout.add_widget(btn_volver)
+        self.add_widget(layout)
+
+class MiApp(App):
+    def build(self):
+        pantallas = ScreenManager()
+        # Añadimos todas las pantallas al manager
+        pantallas.add_widget(PantallaInicio(name="inicio"))
+        pantallas.add_widget(PantallaArriba(name="pantalla_arriba"))
+        pantallas.add_widget(PantallaAbajo(name="pantalla_abajo"))
+        pantallas.add_widget(PantallaIzquierda(name="pantalla_izq"))
+        pantallas.add_widget(PantallaDerecha(name="pantalla_der"))
+        return pantallas
+
+if __name__ == '__main__':
+    MiApp().run()
+
+## soy la persona mas seria del mundo lo juro
