@@ -4,27 +4,17 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
+from kivy.clock import Clock
 from functions import ruffier_index, ruffier_results
 import json
 from time import sleep
 
 ## GLOBAL
 
-def timer(time, label): ## CREDITS TO lzth2210 for inspiring this function's logic! (https://github.com/lzth2210/Astra-Timer)
-    while time > 0:
-        time -= 1
-        minutes = time // 60 
-        seconds = time % 60
-        label.text(f"{minutes:02}:{seconds:02}", end='\r')
-        sleep(1) 
-    print("Finished")
-
 name, age = '', 7
-pulse_1 = 0
-pulse_2 = 0
-pulse_3 = 0
+pulse_1, pulse_2, pulse_3 = 0, 0, 0
 language = "es"
-ruffier = 0
+ruffier = 0.0
 results = ""
 
 with open("test_ruffier/language.json", "r", encoding="utf-8") as archivo:
@@ -156,6 +146,8 @@ class PulseScreen(Screen):
 
 class WorkoutScreen(Screen):
     def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
         global languages, language
         instructions_text = Label(text=languages[language]["second_step"])
         self.counter = Label(text=f"00:45")
@@ -175,16 +167,34 @@ class WorkoutScreen(Screen):
         main_layout.add_widget(self.temporizer_button)
         main_layout.add_widget(self.next_button)
 
-        #self.add_widget(main_layout)
+        self.add_widget(main_layout)
 
-    def set_temporizer(self):
-        global timer
+    def set_temporizer(self, *args):
         print("temporizer has been started")
         self.sits_text.color = (1, 1, 1, 1)
-        timer(45, self.counter)
-        self.next_button.disabled = False
+        
+        self.seconds_left = 45
+        self.temporizer_button.disabled = True
 
-    def next(self):
+        Clock.schedule_interval(self.update_timer, 1.0)
+
+    def update_timer(self, dt):
+        global languages, language
+        self.seconds_left -= 1
+        
+        minutes = self.seconds_left // 60
+        seconds = self.seconds_left % 60
+        self.counter.text = f"{minutes:02}:{seconds:02}"
+
+        if self.seconds_left <= 0:
+            Clock.unschedule(self.update_timer)
+            print("Finished")
+            self.next_button.disabled = False
+            self.temporizer_button.text = languages[language]["temporizer_restart"]
+            self.temporizer_button.disabled = False
+            return False
+
+    def next(self, *args):
         app = App.get_running_app()
         app.root.current = "lastStep"
         app.root.transition.direction = "left"
@@ -192,11 +202,12 @@ class WorkoutScreen(Screen):
 
 class Pulse2Screen(Screen):
     def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         global languages, language
 
-        instructions_text = Label(text=languages[language]["last_step"])
-        first_pulse_text = Label(text=languages[language]["first_pulse"])
-        second_pulse_text = Label(text=languages[language]["second_pulse"])
+        instructions_text = Label(text=languages[language]["last_step"], color=(0,0,0,1))
+        first_pulse_text = Label(text=languages[language]["first_pulse"], color=(0,0,0,1))
+        second_pulse_text = Label(text=languages[language]["second_pulse"], color=(0,0,0,1))
 
         self.input_pulse_1 = TextInput(multiline=False)
         self.input_pulse_2 = TextInput(multiline=False)
@@ -209,7 +220,6 @@ class Pulse2Screen(Screen):
         input_2_layout = BoxLayout(padding=20, spacing=10, size_hint_y=None, size=(1, '80sp'))
 
         main_layout.add_widget(instructions_text)
-        main_layout.add_widget(self.name_warning)
 
         input_layout.add_widget(first_pulse_text)
         input_layout.add_widget(self.input_pulse_1)
@@ -241,13 +251,27 @@ class Pulse2Screen(Screen):
 
 class ResultScreen(Screen):
     def __init__(self, **kwargs):
-        global languages, language, results, ruffier
+        super().__init__(**kwargs)
 
-        results = Label(text=str(languages[language]["results"], {results}, ({ruffier})))
+        self.results = Label(text="")
+        self.restart_button = Button(text=languages[language]["restart"], size_hint=(0.4, 0.2), pos_hint={'center_x':0.5})
+        self.restart_button.on_press = self.restart
 
-        main_layout = BoxLayout(orientation="Vertical")
+        main_layout = BoxLayout(orientation="vertical")
+
+        main_layout.add_widget(self.results)
+        main_layout.add_widget(self.restart_button)
 
         self.add_widget(main_layout)
+
+    def restart(self, *args):
+        app = App.get_running_app()
+        app.root.transition.direction = "left"
+        app.root.current = "start"
+
+    def on_enter(self, *args):
+        global languages, language, results, ruffier
+        self.results.text= f'{languages[language]["results"]} {results} {ruffier}'
 
 class RuffierApp(App):
     def build(self):

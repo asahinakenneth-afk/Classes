@@ -1,5 +1,5 @@
 def ruffier_index(pulse_1, pulse_2, pulse_3):
-    return (4*(pulse_1, pulse_2, pulse_3) - 200)/10
+    return (4*(pulse_1 + pulse_2 + pulse_3) - 200)/10
 
 ## POR FAVOR LIMPIA ESTA MIERDA QUE SE VE HORRIBLE Y PONLE UNA ESTRUCTURA DE CASOS DIOS MIO???
 ## como se factoriza un codigo.

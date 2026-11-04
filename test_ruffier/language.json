@@ -2,8 +2,8 @@
     "es" : {
         "welcome" : "Esta aplicación nos permite \n realizar un diagnóstico inicial de tu salud \n usando una prueba de Ruffier. Una prueba de Ruffier es una prueba de esfuerzo \n diseñada para evaluar la eficiencia del corazón durante el esfuerzo físico.\n El usuario calcula su frecuencia cardíaca durante 15 segundos.\n Luego, el usuario realiza 30 sentadillas en el transcurso de 45 segundos.\n Después de finalizar el esfuerzo, se calcula nuevamente el pulso: \n el número de pulsaciones durante los primeros 15 segundos, 30 segundos de descanso, \n y el número de pulsaciones durante los últimos 15 segundos.\n",
         "first_step" : "Mide tu pulso durante 15 segundos.\n Escribe tus resultados en los campos correspondientes.",
-        "second_step" : "Haz 30 sentadillas en 45 segundos.\n Presiona el botón “Iniciar” para activar el temporizador. Realiza las sentadillas al ritmo del contador.",
-        "sits_step" : "Haz 30 sentadillas en 45 segundos.",
+        "second_step" : "Haz en 45 segundos.\n Presiona el botón “Iniciar” para activar el temporizador.",
+        "sits_step" : "Mientras el contador decrementa, realiza sentadillas o algun ejercicio",
         "last_step" : "Mide tu pulso dos veces durante el próximo minuto:\n durante los primeros 15 segundos, y luego durante los últimos 15 segundos del minuto.\n Escribe tus resultados en los campos correspondientes.",
         "results" : "Querido usuario, su estado segun el indice de Ruffier es el siguiente:\n",
 
@@ -13,7 +13,9 @@
         "insert_age" : "ingrese su edad",
         "insert_pulse" : "ingrese su pulso",
         "next" : "Siguiente",
+        "restart" : "Reiniciar prueba",
         "temporizer_init" : "Iniciar temporizador",
+        "temporizer_restart" : "Reiniciar temporizador",
         "first_pulse" : "Primer pulso (inmediato)",
         "second_pulse" : "Segundo pulso (luego de descansar)"
     }
