@@ -2,21 +2,67 @@
     "es" : {
         "welcome" : "Esta aplicación nos permite \n realizar un diagnóstico inicial de tu salud \n usando una prueba de Ruffier. Una prueba de Ruffier es una prueba de esfuerzo \n diseñada para evaluar la eficiencia del corazón durante el esfuerzo físico.\n El usuario calcula su frecuencia cardíaca durante 15 segundos.\n Luego, el usuario realiza 30 sentadillas en el transcurso de 45 segundos.\n Después de finalizar el esfuerzo, se calcula nuevamente el pulso: \n el número de pulsaciones durante los primeros 15 segundos, 30 segundos de descanso, \n y el número de pulsaciones durante los últimos 15 segundos.\n",
         "first_step" : "Mide tu pulso durante 15 segundos.\n Escribe tus resultados en los campos correspondientes.",
-        "second_step" : "Haz en 45 segundos.\n Presiona el botón “Iniciar” para activar el temporizador.",
+        "second_step" : "Haz sentadillas durante 45 segundos.\n Presiona el botón “Iniciar” para activar el temporizador.",
         "sits_step" : "Mientras el contador decrementa, realiza sentadillas o algun ejercicio",
         "last_step" : "Mide tu pulso dos veces durante el próximo minuto:\n durante los primeros 15 segundos, y luego durante los últimos 15 segundos del minuto.\n Escribe tus resultados en los campos correspondientes.",
         "results" : "Querido usuario, su estado segun el indice de Ruffier es el siguiente:\n",
 
         "start_test" : "Comenzar el test", 
-        "insert_name": "ingrese su nombre",
+        "insert_name": "Ingrese su nombre",
         "error_name" : "Por favor, inserte su nombre para continuar",
-        "insert_age" : "ingrese su edad",
-        "insert_pulse" : "ingrese su pulso",
+        "insert_age" : "Ingrese su edad",
+        "insert_pulse" : "Ingrese su pulso",
         "next" : "Siguiente",
         "restart" : "Reiniciar prueba",
         "temporizer_init" : "Iniciar temporizador",
         "temporizer_restart" : "Reiniciar temporizador",
         "first_pulse" : "Primer pulso (inmediato)",
-        "second_pulse" : "Segundo pulso (luego de descansar)"
-    }
+        "second_pulse" : "Segundo pulso (luego de descansar)",
+
+        "dev_message" : "No vuelvo a tocar Kivy en toda mi vida"
+    },
+    "en": {
+    "welcome": "This application allows us \n to perform an initial health assessment \n using a Ruffier test. A Ruffier test is a stress test \n designed to evaluate heart efficiency during physical exertion.\n The user measures their heart rate for 15 seconds.\n Then, the user performs 30 squats over the course of 45 seconds.\n After completing the exercise, the pulse is measured again: \n the number of beats during the first 15 seconds, 30 seconds of rest, \n and the number of beats during the last 15 seconds.\n",
+    "first_step": "Measure your pulse for 15 seconds.\n Enter your results in the corresponding fields.",
+    "second_step": "Do squats for 45 seconds.\n Press the \"Start\" button to activate the timer.",
+    "sits_step": "While the counter counts down, perform squats or some exercise",
+    "last_step": "Measure your pulse twice during the next minute:\n during the first 15 seconds, and then during the last 15 seconds of the minute.\n Enter your results in the corresponding fields.",
+    "results": "Dear user, your condition according to the Ruffier index is as follows:\n",
+
+    "start_test": "Start test",
+    "insert_name": "Enter your name",
+    "error_name": "Please enter your name to continue",
+    "insert_age": "Enter your age",
+    "insert_pulse": "Enter your pulse",
+    "next": "Next",
+    "restart": "Restart test",
+    "temporizer_init": "Start timer",
+    "temporizer_restart": "Restart timer",
+    "first_pulse": "First pulse (immediate)",
+    "second_pulse": "Second pulse (after resting)",
+
+    "dev_message": "I will never touch Kivy again in my life"
+  },
+    "ca": {
+    "welcome": "Aquesta aplicació ens permet \n realitzar un diagnòstic inicial de la teva salut \n utilitzant una prova de Ruffier. Una prova de Ruffier és una prova d'esforç \n dissenyada per avaluar l'eficiència del cor durant l'esforç físic.\n L'usuari calcula la seva freqüència cardíaca durant 15 segons.\n Després, l'usuari realitza 30 esquats en el transcurs de 45 segons.\n Després de finalitzar l'esforç, es calcula novament el pols: \n el nombre de pulsacions durant els primers 15 segons, 30 segons de descans, \n i el nombre de pulsacions durant els últims 15 segons.\n",
+    "first_step": "Mesura el teu pols durant 15 segons.\n Escriu els teus resultats en els camps corresponents.",
+    "second_step": "Fes esquats durant 45 segons.\n Prem el botó “Iniciar” per activar el temporitzador.",
+    "sits_step": "Mentre el comptador decreix, realitza esquats o algun exercici",
+    "last_step": "Mesura el teu pols dues vegades durant el proper minut:\n durant els primers 15 segons, i després durant els últims 15 segons del minut.\n Escriu els teus resultats en els camps corresponents.",
+    "results": "Estimat usuari, el seu estat segons l'índex de Ruffier és el següent:\n",
+
+    "start_test": "Començar el test",
+    "insert_name": "Introdueixi el seu nom",
+    "error_name": "Si us plau, insereixi el seu nom per continuar",
+    "insert_age": "Introdueixi la seva edat",
+    "insert_pulse": "Introdueixi el seu pols",
+    "next": "Següent",
+    "restart": "Reiniciar prova",
+    "temporizer_init": "Iniciar temporitzador",
+    "temporizer_restart": "Reiniciar temporitzador",
+    "first_pulse": "Primer pols (immediat)",
+    "second_pulse": "Segon pols (després de descansar)",
+
+    "dev_message": "No torno a tocar Kivy en tota la meva vida"
+  }
 }
