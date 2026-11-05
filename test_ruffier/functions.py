@@ -4,6 +4,13 @@ def ruffier_index(pulse_1, pulse_2, pulse_3):
 ## POR FAVOR LIMPIA ESTA MIERDA QUE SE VE HORRIBLE Y PONLE UNA ESTRUCTURA DE CASOS DIOS MIO???
 ## como se factoriza un codigo.
 
+def check_int(value):
+    try:
+        return int(value)
+    except:
+        return 0
+
+
 def ruffier_results(ruffier, age):
     if age >= 15:
         if ruffier >= 6 and ruffier <= 10.9:
